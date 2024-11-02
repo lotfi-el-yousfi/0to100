@@ -11,13 +11,19 @@ import java.util.List;
 public class BookService {
 
     @Autowired
-    BookRepo authorrepo;
+    BookRepo bookRepo;
 
     public List<Book> findAll() {
-        return authorrepo.findAll();
+        return bookRepo.findAll();
     }
 
     public Book save(Book user) {
-        return authorrepo.save(user);
+        return bookRepo.save(user);
+    }
+
+
+    public List<Book> getBooksByAuthorName(String authorName) {
+        return bookRepo.findBooksByAuthorName(authorName);
+
     }
 }

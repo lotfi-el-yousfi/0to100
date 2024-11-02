@@ -16,12 +16,19 @@ public class BookController {
 
     @Autowired
     BookService Bookservice;
+    @Autowired
+    private BookService bookService;
     ;
 
     @GetMapping
     public ResponseEntity<List<Book>> getAllUsers() {
         List<Book> Books = Bookservice.findAll();
         return ResponseEntity.ok(Books);
+    }
+
+    @GetMapping("/by-author")
+    public List<Book> getBooksByAuthor(@RequestParam String authorName) {
+        return Bookservice.getBooksByAuthorName(authorName);
     }
 
     @PostMapping
